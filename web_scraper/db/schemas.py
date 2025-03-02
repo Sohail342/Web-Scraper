@@ -15,3 +15,7 @@ class MFAVerify(BaseModel):
     username: str
     otp_code: str
     
+class AccessToken(BaseModel):
+    access_token: str
+    token_type: str
+    

@@ -10,5 +10,6 @@ class User(Base):
     hashed_password = Column(String, nullable=False)
     email = Column(String, unique=True, nullable=True)
     otp_code = Column(String, nullable=True)
+    verified = Column(Boolean, default=False)
     
     
