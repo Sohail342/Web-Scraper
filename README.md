@@ -32,8 +32,8 @@ pip install -r requirements.txt
 ```
 
 ### 4️⃣ Set Up Environment Variables (.env)
-```bash
 Create a .env file in the root directory or edit .env_example:
+```bash
 DATABASE_URL=YOURDATABASEURL
 SECRET_KEY=YourSecretKey
 
