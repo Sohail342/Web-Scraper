@@ -9,10 +9,10 @@ async def lifespan(app: FastAPI):
     # Code to run on startup
     await create_tables()
     yield
-    # Code to run on shutdown (optional)
+    # Code to run on shutdown 
     
     
-app = FastAPI(lifespan=lifespan)
+app = FastAPI(lifespan=lifespan, title="Web Scraper API", version="0.1", description="API for web scraping")
 
 # Include the auth router
 app.include_router(auth.router)

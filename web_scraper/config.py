@@ -1,14 +1,27 @@
-import os
-from dotenv import load_dotenv
-
-load_dotenv()
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
-DATABASE_URL = os.getenv("DATABASE_URL", "postgresql+asyncpg://user:password@localhost/mfa_db")
-SECRET_KEY = os.getenv("SECRET_KEY", "SECRET_KEY")
-ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES = 30
-EMAIL_HOST = os.getenv("EMAIL_HOST")
-EMAIL_USERNAME = os.getenv("EMAIL_USERNAME")
-EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD")
-EMAIL_PORT = os.getenv("EMAIL_PORT", 587)
+class Settings(BaseSettings):
+    
+    # Database settings
+    DATABASE_URL: str
+    SECRET_KEY: str 
+    
+    # JWT settings
+    ALGORITHM: str = "HS256"
+    ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
+    REFRESH_TOKEN_EXPIRE_DAYS: int = 7
+    
+    # Email settings
+    EMAIL_HOST: str 
+    EMAIL_USERNAME: str
+    EMAIL_PASSWORD: str
+    EMAIL_PORT: int = 587       
+    
+    model_config = SettingsConfigDict(
+        env_file="web_scraper/.env",
+        extra="ignore",
+    )        
+    
+
+Config = Settings()           
