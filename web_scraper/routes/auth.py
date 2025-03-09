@@ -33,10 +33,6 @@ async def login(user: UserLogin, db: AsyncSession = Depends(get_db)):
     # Create Refresh Token
     refresh_token = create_refresh_token({"sub": user.username_or_email})
     
-    from icecream import ic
-    ic(access_token)
-    ic(refresh_token)
-    
     return {
         "access_token": access_token,
         "refresh_token": refresh_token,
