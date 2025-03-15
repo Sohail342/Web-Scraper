@@ -42,7 +42,7 @@ async def login(user: UserLogin, db: AsyncSession = Depends(get_db)):
 
 
 
-@router.post("/verify-otp")
+@router.post("/verify")
 async def verify(data: MFAVerify, db: AsyncSession = Depends(get_db)):
     try:
         
